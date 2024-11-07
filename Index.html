@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stride Website</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 60px; /* Space for fixed navbar */
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #8f1212;
+            height: 60px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar-logo img {
+            width: 180px;
+            height: 49px;
+        }
+
+        /* Navigation Menu Styling */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item {
+            margin-right: 25px;
+        }
+
+        .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #8f1212;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .dropdown-menu li {
+            padding: 6px 10px;
+        }
+
+        .dropdown-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hamburger Menu Styling */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle:focus {
+            outline: none;
+        }
+
+        .menu-toggle .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                right: -100%;
+                width: 100%;
+                background-color: #8f1212;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: right 0.3s ease, opacity 0.3s ease;
+                opacity: 0;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+                opacity: 1;
+            }
+
+            .nav-item {
+                margin-bottom: 20px;
+            }
+
+            .nav-link {
+                padding: 20px;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background-color: #8f1212;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .dropdown-menu li {
+                padding: 5px 0;
+                text-align: center;
+            }
+        }
+
+        /* Additional responsiveness for large screens */
+        @media (min-width: 1200px) {
+            .navbar-container {
+                padding: 0 30px;
+            }
+
+            .navbar-logo img {
+                width: 200px;
+                height: auto;
+            }
+
+            .nav-link {
+                font-size: 1.3rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <img src="C:\Users\strid\OneDrive\Desktop\FINAL WEB SITE\PICTURES\stride_logo.jpg" alt="Stride Logo">
+            </div>
+            
+            <!-- Hamburger Menu Icon -->
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="Aboutus.html" target="_blank" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#telecom" class="nav-link">Our Services</a>
+                </li>
+                <li class="nav-item"><a href="Career.html" target="_blank" class="nav-link">Career</a></li>
+                <li class="nav-item"><a href="Contactus.html" target="_blank" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons" id="nav-icons">
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const isExpanded = navMenu.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+</body>
+</html>
